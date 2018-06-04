@@ -1,0 +1,17 @@
+FROM 2fa0/spiderbasis:0.0.1
+
+MAINTAINER niugz1996@foxmail.com
+
+USER root
+    
+WORKDIR /home/wechat-spider
+
+COPY ./wechat-spider  /home/wechat-spider/
+
+COPY entrypoint.sh /sbin/entrypoint.sh
+
+RUN  chmod -R 755 /home/wechat-spider && chmod 755 /sbin/entrypoint.sh
+
+EXPOSE 8001/tcp
+
+ENTRYPOINT [ "/sbin/entrypoint.sh"]
